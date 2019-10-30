@@ -2,8 +2,7 @@ package Dominio;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Enumeration;
-import java.util.Hashtable;
+
 
 
 
@@ -11,16 +10,27 @@ public class Cubo {
 	
 	
 	private int dimension;
-	private Hashtable<String, int[][]> cubo= new Hashtable<String,int[][]>();
+	private int matriz[][][];
+
 	private Utilidad u = new Utilidad();
 
-	public Cubo(int dimension, Hashtable<String, int[][]> cubo) {
+	//CONSTRUCTOR
+	public Cubo(int dimension) {
 		this.dimension=dimension;
-		this.cubo= cubo;
+		this.matriz= new int[Cara.values().length][dimension][dimension];
 	}
-	
+	//CONSTRUCTOR VACIO
 	public Cubo() {
 		
+	}
+	
+	
+	public int[][][] getMatriz() {
+		return matriz;
+	}
+
+	public void setMatriz(int matriz[][][]) {
+		this.matriz = matriz;
 	}
 	
 	public int getDimension() {
@@ -34,29 +44,17 @@ public class Cubo {
 	}
 
 
+	
 
-	public Hashtable<String, int[][]> getCubo() {
-		return cubo;
-	}
-
-	public void setCubo(Hashtable<String, int[][]> cubo) {
-		this.cubo = cubo;
-	}
-
-	public Cubo clonar(Cubo cubo) {
+	public Cubo clonar() {
 		Cubo cuboNuevo = new Cubo();
-		
-		cuboNuevo.setDimension(cubo.getDimension());
-		
-		Enumeration e = cubo.getCubo().keys();
-		String clave;
-		int[][] valor;
-		while( e.hasMoreElements() ){
-		  
-			clave = (String) e.nextElement();
-			int [][] matriz = u.copiarMatriz( cubo.getCubo().get(clave));
- 			cuboNuevo.getCubo().put(clave, matriz);
+		cuboNuevo.setDimension(this.dimension);
+		int [][][] nuevaMatriz = new int [this.matriz.length][cuboNuevo.getDimension()][cuboNuevo.getDimension()];
+	
+		for (int i = 0; i < nuevaMatriz.length; i++) {
+			nuevaMatriz[i]=u.copiarMatriz(this.matriz[i]);
 		}
+		cuboNuevo.setMatriz(nuevaMatriz);
 		return cuboNuevo;
 		
 	}
@@ -65,49 +63,36 @@ public class Cubo {
 		return null;
 	}
 	
-	
-	public Cubo movimientoL(Cubo cuboInicio, int columnaAgirar) {
-		
-		
-		
-		Cubo nuevoCubo = cuboInicio.clonar(cuboInicio);
-		
-		if(nuevoCubo == null) {
-			System.out.println("no clonado");
-		}else {
-			System.out.println();
-		}
-		
-		if(columnaAgirar == 0 || columnaAgirar == cuboInicio.getDimension()-1) {
-			//TODO: 
-		}
-		else {
-			
-			u.sustituirColumna(nuevoCubo.getCubo().get("down"), u.cogerColumna(cuboInicio.getCubo().get("front"), columnaAgirar),columnaAgirar);
-			u.sustituirColumna(nuevoCubo.getCubo().get("back"), u.cogerColumna(cuboInicio.getCubo().get("down"), columnaAgirar),columnaAgirar);
-			u.sustituirColumna(nuevoCubo.getCubo().get("up"), u.cogerColumna(cuboInicio.getCubo().get("back"), columnaAgirar),columnaAgirar);
-			u.sustituirColumna(nuevoCubo.getCubo().get("front"), u.cogerColumna(cuboInicio.getCubo().get("up"), columnaAgirar),columnaAgirar);
 
-		}
+	private String pasarMD5() {
+		String cadena = Arrays.deepToString(matriz[Cara.BACK.cara()]);
+		cadena += Arrays.deepToString(matriz[Cara.DOWN.cara()]);
+		cadena += Arrays.deepToString(matriz[Cara.FRONT.cara()]);
+		cadena += Arrays.deepToString(matriz[Cara.LEFT.cara()]);
+		cadena += Arrays.deepToString(matriz[Cara.RIGHT.cara()]);
+		cadena += Arrays.deepToString(matriz[Cara.UP.cara()]);
 		
-		
-		return nuevoCubo;
+		return cadena.replaceAll("[^\\dA-Za-z]","");
 	}
-
-	
 	@Override
 	public String toString() {
 		
-		String devolver = "";
+
+		System.out.println(Utilidad.getU().encriptar(pasarMD5()));
 		
-		Enumeration e = cubo.keys();
-		String clave;
-		int[][] valor;
-		while( e.hasMoreElements() ){
-		  clave = (String) e.nextElement();
-		  devolver += "Clave : " + clave + " - Valor : " + Arrays.deepToString(cubo.get(clave)) +"\n";
-		}
+		String retornar="";
+		retornar += Cara.BACK +" " +Arrays.deepToString(this.matriz[Cara.BACK.cara()])+"\n";
+		retornar += Cara.DOWN +" " +Arrays.deepToString(this.matriz[Cara.DOWN.cara()])+"\n";
+		retornar += Cara.FRONT +" " +Arrays.deepToString(this.matriz[Cara.FRONT.cara()])+"\n";
+		retornar += Cara.LEFT +" " +Arrays.deepToString(this.matriz[Cara.LEFT.cara()])+"\n";
+		retornar += Cara.RIGHT +" " +Arrays.deepToString(this.matriz[Cara.RIGHT.cara()])+"\n";
+		retornar += Cara.UP +" " +Arrays.deepToString(this.matriz[Cara.UP.cara()])+"\n";
 		
-		return devolver;
+		
+		return retornar;
+		
+
 	}
+
+	
 }

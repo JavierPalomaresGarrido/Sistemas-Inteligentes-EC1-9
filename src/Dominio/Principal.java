@@ -1,43 +1,38 @@
 package Dominio;
 
-import java.util.Arrays;
-import java.util.Hashtable;
-
 public class Principal {
-	
 
 	
 	public static void main(String [] args) {
-		Hashtable<String, int[][]> inicial = new Hashtable<String, int[][]>();
 		
-		
-		inicial.put("back",crearMatriz(3, 3));
-		inicial.put("front",crearMatriz(3, 2));
-		inicial.put("down",crearMatriz(3, 1));
-		inicial.put("up",crearMatriz(3, 0));
-		inicial.put("right",crearMatriz(3, 5));
-		inicial.put("left",crearMatriz(3, 4));
-		
-		
-		Cubo c = new Cubo(3,inicial);
+
+		LecturaJSON lectura = new LecturaJSON();
+		Cubo c= lectura.leerJson("src/Pruebas/Cubo10x10.json");
 		System.out.println(c.toString());
 		
 		
-		Cubo cnuevo= c.movimientoL(c, 1);
-		System.out.println(cnuevo.toString());
-		System.out.println(c.toString());
-		
-		
- 	}
-	
-	public static int [][] crearMatriz(int dimension,int numero){
-		int[][] devolver = new int[dimension][dimension];
-		for (int i = 0; i < dimension; i++) {
-			for (int j = 0; j < dimension; j++) {
-				devolver[i][j]=numero;
-			}
-		}
-		return devolver;
+     	Cubo cl3= new Movimiento().Movimientol(c, 3);
+     	System.out.println(cl3);
+     	Cubo cD1 = new Movimiento().MovimientoD(cl3,1);
+     	System.out.println(cD1);
+     	Cubo cl1 = new Movimiento().Movimientol(cD1, 1);
+     	System.out.println(cl1);
+     	Cubo cd0 = new Movimiento().Movimientod(cl1, 0);
+     	System.out.println(cd0);
+     	Cubo cB0 = new Movimiento().MovimientoB(cd0, 0);
+     	System.out.println(cB0);
+     	Cubo cb5 = new Movimiento().Movimientob(cB0, 5);
+     	System.out.println(cb5);
+    	Cubo cl2= new Movimiento().Movimientol(cb5, 2);
+     	System.out.println(cl2);
+    	Cubo cd1 = new Movimiento().Movimientod(cl2, 1);
+     	System.out.println(cd1);
+     	
+     	
+ 	
+     
 	}
+	
+
  
 }
