@@ -2,12 +2,20 @@ package Dominio;
 
 public class Movimiento {
 
-	String id;
 
+	private static Movimiento m;
+	
+	public static Movimiento getM() {
+		if(m==null) {
+			m= new Movimiento();
+		}
+		
+		return m;
+	}
 	// Grado = true -->90
 	// Grado = false -->-90
 	public Cubo MovimientoL(Cubo cuboInicial, int columnaAgirar) {
-		System.out.println("ACCION: L"+columnaAgirar);
+		
 		Cubo nuevoCubo = cuboInicial.clonar();
 
 		if (columnaAgirar == 0) { // Estamos en la primera columna
@@ -35,7 +43,7 @@ public class Movimiento {
 	}
 	
 	public Cubo Movimientol(Cubo cuboInicial, int columnaAgirar) {
-		System.out.println("ACCION: l"+columnaAgirar);
+	
 		Cubo nuevoCubo = cuboInicial.clonar();
 
 		if (columnaAgirar == 0) { // Estamos en la primera columna
@@ -61,7 +69,7 @@ public class Movimiento {
 	}
 
 	public Cubo MovimientoD(Cubo cuboInicial, int filaAgirar) {
-		System.out.println("ACCION: D"+filaAgirar);
+		
 		Cubo nuevoCubo = cuboInicial.clonar();
 
 		if (filaAgirar == 0) { // Estamos en la primera columna
@@ -95,7 +103,7 @@ public class Movimiento {
 	}
 
 	public Cubo Movimientod(Cubo cuboInicial, int filaAgirar) {
-		System.out.println("ACCION d"+filaAgirar);
+		
 		Cubo nuevoCubo = cuboInicial.clonar();
 		if (filaAgirar == 0) { // Estamos en la primera columna
 
@@ -124,7 +132,7 @@ public class Movimiento {
 	
 	
 	public Cubo MovimientoB(Cubo cuboInicial, int filaAgirar) {
-		System.out.println("ACCION B"+filaAgirar);
+		
 		Cubo nuevoCubo = cuboInicial.clonar();
 
 		if (filaAgirar == 0) { // Estamos en la primera columna
@@ -155,7 +163,7 @@ public class Movimiento {
 	
 	public Cubo Movimientob(Cubo cuboInicial, int filaAgirar) {
 		
-		System.out.println("ACCION b"+filaAgirar);
+		
 		
 		Cubo nuevoCubo = cuboInicial.clonar();
 
@@ -184,8 +192,5 @@ public class Movimiento {
 
 	}
 
-	@Override
-	public String toString() {
-		return id;
-	}
+	
 }

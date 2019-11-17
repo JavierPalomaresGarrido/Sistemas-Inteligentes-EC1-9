@@ -64,7 +64,7 @@ public class Cubo {
 	}
 	
 
-	private String pasarMD5() {
+	public String pasarMD5() {
 		String cadena = Arrays.deepToString(matriz[Cara.BACK.cara()]);
 		cadena += Arrays.deepToString(matriz[Cara.DOWN.cara()]);
 		cadena += Arrays.deepToString(matriz[Cara.FRONT.cara()]);
@@ -72,27 +72,33 @@ public class Cubo {
 		cadena += Arrays.deepToString(matriz[Cara.RIGHT.cara()]);
 		cadena += Arrays.deepToString(matriz[Cara.UP.cara()]);
 		
-		return cadena.replaceAll("[^\\dA-Za-z]","");
+		return Utilidad.getU().encriptar(cadena.replaceAll("[^\\dA-Za-z]",""));
 	}
 	@Override
 	public String toString() {
 		
 
-		System.out.println(Utilidad.getU().encriptar(pasarMD5()));
-		
-		String retornar="";
-		retornar += Cara.BACK +" " +Arrays.deepToString(this.matriz[Cara.BACK.cara()])+"\n";
-		retornar += Cara.DOWN +" " +Arrays.deepToString(this.matriz[Cara.DOWN.cara()])+"\n";
-		retornar += Cara.FRONT +" " +Arrays.deepToString(this.matriz[Cara.FRONT.cara()])+"\n";
-		retornar += Cara.LEFT +" " +Arrays.deepToString(this.matriz[Cara.LEFT.cara()])+"\n";
-		retornar += Cara.RIGHT +" " +Arrays.deepToString(this.matriz[Cara.RIGHT.cara()])+"\n";
-		retornar += Cara.UP +" " +Arrays.deepToString(this.matriz[Cara.UP.cara()])+"\n";
+		System.out.println(pasarMD5());
 		
 		
-		return retornar;
+		
+		
+		return convertiraJSON();
 		
 
 	}
 
+	public String convertiraJSON() {
+		
+		String retornar="{";
+		retornar += "'"+Cara.BACK+"':"+" " +Arrays.deepToString(this.matriz[Cara.BACK.cara()])+",";
+		retornar += "'"+Cara.DOWN+"':" +" " +Arrays.deepToString(this.matriz[Cara.DOWN.cara()])+",";
+		retornar += "'"+Cara.FRONT+"':" +" " +Arrays.deepToString(this.matriz[Cara.FRONT.cara()])+",";
+		retornar += "'"+Cara.LEFT+"':" +" " +Arrays.deepToString(this.matriz[Cara.LEFT.cara()])+",";
+		retornar += "'"+Cara.RIGHT+"':" +" " +Arrays.deepToString(this.matriz[Cara.RIGHT.cara()])+",";
+		retornar += "'"+Cara.UP+"':" +" " +Arrays.deepToString(this.matriz[Cara.UP.cara()])+"}";
+		
+		return retornar;
+	}
 	
 }
