@@ -14,17 +14,17 @@ public class Utilidad {
 			u = new Utilidad();
 		}
 		return u;
-	}
+	} 
 
-	public int[] cogerFila(int matriz[][],int fila) {
+	public byte[] cogerFila(byte matriz[][],int fila) {
 		
 		return matriz[fila];
 	}
 	
-	public int[] cogerColumna(int matriz [][], int columna) {
+	public byte[] cogerColumna(byte matriz [][], int columna) {
 		
 		
-		int devolver[] = new int [matriz.length];
+		byte devolver[] = new byte[matriz.length];
 		
 		for (int i = 0; i < matriz.length; i++) {
 			
@@ -34,13 +34,13 @@ public class Utilidad {
 		return devolver;
 	}
 	
-	public void sustituirFila(int matriz[][], int[] nuevaFila, int filaASustituir) {
+	public void sustituirFila(byte matriz[][], byte[] nuevaFila, int filaASustituir) {
 		
 		matriz[filaASustituir] = nuevaFila;
 		
 	}
 	
-	public void sustituirColumna(int matriz[][], int[] columna, int columnaASustituir) {
+	public void sustituirColumna(byte matriz[][], byte[] columna, int columnaASustituir) {
 		
 		for (int i = 0; i < columna.length; i++) {
 			
@@ -48,8 +48,8 @@ public class Utilidad {
 		}
 	}
 	
-	public int[][] copiarMatriz(int [][] matriz){
-		int [][] nueva = new int[matriz.length][matriz[0].length];
+	public byte[][] copiarMatriz(byte[][] matriz){
+		byte [][] nueva = new byte[matriz.length][matriz[0].length];
 		for (int i = 0; i < matriz.length; i++) {
 			for (int j = 0; j < matriz[i].length; j++) {
 				nueva[i][j] = matriz[i][j];
@@ -58,9 +58,9 @@ public class Utilidad {
 		return nueva;
 	}
 	
-	public int [][] rotarMatriz(int[][] matriz){
+	public byte [][] rotarMatriz(byte[][] matriz){
 		
-		int matrizRotada [][]= new int [matriz.length][matriz[0].length]; 
+	byte matrizRotada [][]= new byte [matriz.length][matriz[0].length]; 
 		
 		for (int i = 0; i < matriz.length; i++) {
 			matrizRotada[i] = invertirArray(cogerColumna(matriz,i));
@@ -72,9 +72,9 @@ public class Utilidad {
 		
 	}
 	
-	public int [][] rotarMatrizInversa(int[][] matriz){
+	public byte [][] rotarMatrizInversa(byte[][] matriz){
 		
-		int matrizRotada [][]= new int [matriz.length][matriz[0].length]; 
+		byte matrizRotada [][]= new byte [matriz.length][matriz[0].length]; 
 		
 		for (int i = 0; i < matriz.length; i++) {
 			
@@ -86,16 +86,10 @@ public class Utilidad {
 		return matrizRotada;
 		
 	}
+
 	
-	public int [][] sustituirFilaInversa(int matriz[][], int[] nuevaFila, int filaASustituir){
-			
-		
-			return null;
-			
-	}
-	
-	public int [] invertirArray(int [] array) {
-		int [] devolver = new int[array.length];
+	public byte [] invertirArray(byte [] array) {
+		byte [] devolver = new byte [array.length];
 		
 		for (int i = 0; i < array.length; i++) {
 			

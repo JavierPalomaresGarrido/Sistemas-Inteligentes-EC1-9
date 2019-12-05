@@ -5,6 +5,7 @@ import java.util.PriorityQueue;
 
 public class Frontera {
 	
+
 	
 	PriorityQueue<NodoArbol> frontera = new PriorityQueue<NodoArbol>();
 
@@ -18,7 +19,9 @@ public class Frontera {
 	}
 	public NodoArbol eliminar() {
 		
-		return frontera.poll();
+		NodoArbol n = frontera.poll();
+		
+		return n;
 	}
 	public boolean esVacia() {
 		return frontera.size()==0;

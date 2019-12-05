@@ -14,10 +14,10 @@ public class LecturaJSON {
 
 		JSONParser parser = new JSONParser();
 		Cubo c = null;
+		
 		try {
 		
 			FileReader fichero = new FileReader(rutaFichero);
-
 			JSONObject json = (JSONObject) parser.parse(fichero);
 			JSONArray back=(JSONArray) json.get("BACK");
 			
@@ -38,15 +38,15 @@ public class LecturaJSON {
 		return c;
 	}
 
-	public int[][] convertirJSONaMatriz(JSONArray arrayJson) {
+	public byte[][] convertirJSONaMatriz(JSONArray arrayJson) {
 
-		int[][] matriz = new int[arrayJson.size()][arrayJson.size()];
+		byte[][] matriz = new byte[arrayJson.size()][arrayJson.size()];
 
 		for (int i = 0; i < arrayJson.size(); i++) {
 			JSONArray array = (JSONArray) arrayJson.get(i);
 			for (int j = 0; j < array.size(); j++) {
 
-				matriz[i][j] = Integer.parseInt(array.get(j).toString());
+				matriz[i][j] = Byte.parseByte(array.get(j).toString());
 			}
 
 		}

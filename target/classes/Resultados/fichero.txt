@@ -1,0 +1,18 @@
+Estrategia: Voraz
+Profundidad: 6
+Coste: 5
+[0][NODO PADRE] 2d933fbd33229a28f6133b83b1b35130 c=0 p=0 h=3.87 v= 3.87
+[3][b0] 3738b536b078d9c8038988d9a8571973 c=1 p=1 h=2.32 v= 2.32
+[36][D0] 65ea20ab50a2eaef3db6ea85fb7e5a5a c=2 p=2 h=3.09 v= 3.09
+[2930][d1] 8bea69c555ff9ddd8f9dd3d7c7c90f0b c=3 p=3 h=1.55 v= 1.55
+[2945][B0] f90464bdc55bd5e8111dc2b52eaea794 c=4 p=4 h=1.55 v= 1.55
+[3028][B0] 91b788d5565df3def0d775110527845c c=5 p=5 h=0.0 v= 0.0
+Estrategia: Anchura 
+Profundidad: 6
+Coste: 5
+[0][NODO PADRE] 2d933fbd33229a28f6133b83b1b35130 c=0 p=0 h=3.87 v= 0.0
+[3][b0] 3738b536b078d9c8038988d9a8571973 c=1 p=1 h=0.0 v= 1.0
+[36][D0] 65ea20ab50a2eaef3db6ea85fb7e5a5a c=2 p=2 h=0.0 v= 2.0
+[338][d1] 8bea69c555ff9ddd8f9dd3d7c7c90f0b c=3 p=3 h=0.0 v= 3.0
+[3154][B0] f90464bdc55bd5e8111dc2b52eaea794 c=4 p=4 h=0.0 v= 4.0
+[29472][B0] 91b788d5565df3def0d775110527845c c=5 p=5 h=0.0 v= 5.0

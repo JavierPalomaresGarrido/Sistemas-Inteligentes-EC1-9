@@ -6,6 +6,10 @@ import java.util.ArrayList;
 public class EspacioDeEstados {
 
 	private String[] ordenMovimientos= {"B","b","D","d","L","l"};
+	
+	//Este método crea los sucesores (accion,nuevoEstado,coste) usando el vector ordenMovimientos
+	//que indica el tipo de movimiento y por cada elemento en el vector ordenMovimientos
+	//realizar ese mismo movimiento tantas veces como dimension tenga el cubo
 	public ArrayList<Sucesor> crearSucesores(Estado e) {
 		
 		ArrayList<Sucesor> sucesores = new ArrayList<Sucesor>();

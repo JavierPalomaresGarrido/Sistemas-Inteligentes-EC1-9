@@ -10,14 +10,14 @@ public class Cubo {
 	
 	
 	private int dimension;
-	private int matriz[][][];
+	private byte[][][] matriz;
 
 	private Utilidad u = new Utilidad();
 
 	//CONSTRUCTOR
 	public Cubo(int dimension) {
 		this.dimension=dimension;
-		this.matriz= new int[Cara.values().length][dimension][dimension];
+		this.matriz= new byte[Cara.values().length][dimension][dimension];
 	}
 	//CONSTRUCTOR VACIO
 	public Cubo() {
@@ -25,11 +25,11 @@ public class Cubo {
 	}
 	
 	
-	public int[][][] getMatriz() {
+	public byte[][][] getMatriz() {
 		return matriz;
 	}
 
-	public void setMatriz(int matriz[][][]) {
+	public void setMatriz(byte matriz[][][]) {
 		this.matriz = matriz;
 	}
 	
@@ -49,7 +49,7 @@ public class Cubo {
 	public Cubo clonar() {
 		Cubo cuboNuevo = new Cubo();
 		cuboNuevo.setDimension(this.dimension);
-		int [][][] nuevaMatriz = new int [this.matriz.length][cuboNuevo.getDimension()][cuboNuevo.getDimension()];
+		byte [][][] nuevaMatriz = new byte [this.matriz.length][cuboNuevo.getDimension()][cuboNuevo.getDimension()];
 	
 		for (int i = 0; i < nuevaMatriz.length; i++) {
 			nuevaMatriz[i]=u.copiarMatriz(this.matriz[i]);

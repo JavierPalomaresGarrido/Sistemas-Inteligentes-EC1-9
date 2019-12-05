@@ -48,14 +48,16 @@ public class Movimiento {
 
 		if (columnaAgirar == 0) { // Estamos en la primera columna
 
-			nuevoCubo.getMatriz()[Cara.LEFT.cara()]=Utilidad.getU().rotarMatriz(cuboInicial.getMatriz()[Cara.LEFT.cara()]);
+			nuevoCubo.getMatriz()[Cara.LEFT.cara()]=Utilidad.getU().rotarMatrizInversa(cuboInicial.getMatriz()[Cara.LEFT.cara()]);
+
 
 		} else if (columnaAgirar == cuboInicial.getDimension() - 1) {// Estamos en la columna final
-			nuevoCubo.getMatriz()[Cara.RIGHT.cara()]=Utilidad.getU().rotarMatriz(cuboInicial.getMatriz()[Cara.RIGHT.cara()]);
+			nuevoCubo.getMatriz()[Cara.RIGHT.cara()]=Utilidad.getU().rotarMatrizInversa(cuboInicial.getMatriz()[Cara.RIGHT.cara()]);
+			
 		}
 
 		Utilidad.getU().sustituirColumna(nuevoCubo.getMatriz()[Cara.DOWN.cara()], 
-				Utilidad.getU().cogerColumna(cuboInicial.getMatriz()[Cara.BACK.cara()], columnaAgirar), columnaAgirar);
+				 Utilidad.getU().cogerColumna(cuboInicial.getMatriz()[Cara.BACK.cara()], columnaAgirar), columnaAgirar);
 		Utilidad.getU().sustituirColumna(nuevoCubo.getMatriz()[Cara.FRONT.cara()], 
 				Utilidad.getU().cogerColumna(cuboInicial.getMatriz()[Cara.DOWN.cara()], columnaAgirar), columnaAgirar);
 		Utilidad.getU().sustituirColumna(nuevoCubo.getMatriz()[Cara.UP.cara()], 
